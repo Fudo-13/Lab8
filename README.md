@@ -88,7 +88,7 @@ private double price;
 
 В репозитории реализованы методы:
 
-```java
+```text
 findAll()
 findById(Long id)
 save(Order order)
@@ -105,7 +105,7 @@ clear()
 
 В сервисе реализованы методы:
 
-```java
+```text
 findAll()
 findById(Long id)
 create(Order order)
