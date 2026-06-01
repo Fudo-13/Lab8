@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.bsuedu.cad.lab.integration.OrderServiceIntegrationTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-06-01T18:32:47.274Z" hostname="WIN-5AVD390I2A1" time="0.108">
+  <properties/>
+  <testcase name="createShouldNotSaveOrderWhenQuantityIsInvalid()" classname="ru.bsuedu.cad.lab.integration.OrderServiceIntegrationTest" time="0.059"/>
+  <testcase name="deleteShouldRemoveOrderFromRepository()" classname="ru.bsuedu.cad.lab.integration.OrderServiceIntegrationTest" time="0.001"/>
+  <testcase name="findByIdShouldReturnOrderSavedByService()" classname="ru.bsuedu.cad.lab.integration.OrderServiceIntegrationTest" time="0.001"/>
+  <testcase name="createShouldSaveOrderThroughRepository()" classname="ru.bsuedu.cad.lab.integration.OrderServiceIntegrationTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

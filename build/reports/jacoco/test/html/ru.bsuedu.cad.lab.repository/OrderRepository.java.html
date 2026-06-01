@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderRepository.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WEB</a> &gt; <a href="index.source.html" class="el_package">ru.bsuedu.cad.lab.repository</a> &gt; <span class="el_source">OrderRepository.java</span></div><h1>OrderRepository.java</h1><pre class="source lang-java linenums">package ru.bsuedu.cad.lab.repository;
+
+import org.springframework.stereotype.Repository;
+import ru.bsuedu.cad.lab.model.Order;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
+
+@Repository
+public class OrderRepository {
+
+<span class="fc" id="L14">    private final List&lt;Order&gt; orders = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L15">    private final AtomicLong counter = new AtomicLong(3);</span>
+
+<span class="fc" id="L17">    public OrderRepository() {</span>
+<span class="fc" id="L18">        orders.add(new Order(1L, &quot;Ivan Petrov&quot;, &quot;Cat food&quot;, 2, 450.0));</span>
+<span class="fc" id="L19">        orders.add(new Order(2L, &quot;Anna Smirnova&quot;, &quot;Dog toy&quot;, 1, 320.0));</span>
+<span class="fc" id="L20">    }</span>
+
+    public List&lt;Order&gt; findAll() {
+<span class="fc" id="L23">        return orders;</span>
+    }
+
+    public Optional&lt;Order&gt; findById(Long id) {
+<span class="fc" id="L27">        return orders.stream()</span>
+<span class="fc" id="L28">                .filter(order -&gt; order.getId().equals(id))</span>
+<span class="fc" id="L29">                .findFirst();</span>
+    }
+
+    public Order save(Order order) {
+<span class="fc" id="L33">        order.setId(counter.getAndIncrement());</span>
+<span class="fc" id="L34">        orders.add(order);</span>
+<span class="fc" id="L35">        return order;</span>
+    }
+
+    public boolean delete(Long id) {
+<span class="fc" id="L39">        return orders.removeIf(order -&gt; order.getId().equals(id));</span>
+    }
+
+    public Optional&lt;Order&gt; update(Long id, Order updatedOrder) {
+<span class="fc" id="L43">        return findById(id).map(order -&gt; {</span>
+<span class="fc" id="L44">            order.setCustomerName(updatedOrder.getCustomerName());</span>
+<span class="fc" id="L45">            order.setProductName(updatedOrder.getProductName());</span>
+<span class="fc" id="L46">            order.setQuantity(updatedOrder.getQuantity());</span>
+<span class="fc" id="L47">            order.setPrice(updatedOrder.getPrice());</span>
+<span class="fc" id="L48">            return order;</span>
+        });
+    }
+
+    public void clear() {
+<span class="fc" id="L53">        orders.clear();</span>
+<span class="fc" id="L54">        counter.set(1);</span>
+<span class="fc" id="L55">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

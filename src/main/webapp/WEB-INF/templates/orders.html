@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+
+<h1>Pet shop orders</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.customerName}"></td>
+        <td th:text="${order.productName}"></td>
+        <td th:text="${order.quantity}"></td>
+        <td th:text="${order.price}"></td>
+        <td>
+            <a th:href="@{/orders/edit/{id}(id=${order.id})}">Edit</a>
+
+            <form th:action="@{/orders/delete/{id}(id=${order.id})}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<h2>Create order</h2>
+
+<form th:action="@{/orders/create}" method="post">
+    <input type="text" name="customerName" placeholder="Customer name" required>
+    <input type="text" name="productName" placeholder="Product name" required>
+    <input type="number" name="quantity" placeholder="Quantity" required>
+    <input type="number" step="0.1" name="price" placeholder="Price" required>
+    <button type="submit">Create</button>
+</form>
+
+</body>
+</html>

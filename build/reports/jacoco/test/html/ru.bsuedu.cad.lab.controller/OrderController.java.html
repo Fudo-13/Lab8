@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WEB</a> &gt; <a href="index.source.html" class="el_package">ru.bsuedu.cad.lab.controller</a> &gt; <span class="el_source">OrderController.java</span></div><h1>OrderController.java</h1><pre class="source lang-java linenums">package ru.bsuedu.cad.lab.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import ru.bsuedu.cad.lab.model.Order;
+import ru.bsuedu.cad.lab.service.OrderService;
+
+@Controller
+@RequestMapping(&quot;/orders&quot;)
+public class OrderController {
+    private final OrderService orderService;
+
+<span class="nc" id="L14">    public OrderController(OrderService orderService) {</span>
+<span class="nc" id="L15">        this.orderService = orderService;</span>
+<span class="nc" id="L16">    }</span>
+
+    @GetMapping
+    public String getOrders(Model model) {
+<span class="nc" id="L20">        model.addAttribute(&quot;orders&quot;, orderService.findAll());</span>
+<span class="nc" id="L21">        model.addAttribute(&quot;order&quot;, new Order());</span>
+<span class="nc" id="L22">        return &quot;orders&quot;;</span>
+    }
+
+    @PostMapping(&quot;/create&quot;)
+    public String createOrder(@ModelAttribute Order order) {
+<span class="nc" id="L27">        orderService.create(order);</span>
+<span class="nc" id="L28">        return &quot;redirect:/orders&quot;;</span>
+    }
+
+    @PostMapping(&quot;/delete/{id}&quot;)
+    public String deleteOrder(@PathVariable(&quot;id&quot;) Long id) {
+<span class="nc" id="L33">        orderService.delete(id);</span>
+<span class="nc" id="L34">        return &quot;redirect:/orders&quot;;</span>
+    }
+
+    @GetMapping(&quot;/edit/{id}&quot;)
+    public String editOrder(@PathVariable(&quot;id&quot;) Long id, Model model) {
+<span class="nc" id="L39">        Order order = orderService.findById(id).orElseThrow();</span>
+<span class="nc" id="L40">        model.addAttribute(&quot;order&quot;, order);</span>
+<span class="nc" id="L41">        return &quot;edit-order&quot;;</span>
+    }
+
+    @PostMapping(&quot;/update/{id}&quot;)
+    public String updateOrder(@PathVariable(&quot;id&quot;) Long id, @ModelAttribute Order order) {
+<span class="nc" id="L46">        orderService.update(id, order);</span>
+<span class="nc" id="L47">        return &quot;redirect:/orders&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

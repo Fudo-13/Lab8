@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.bsuedu.cad.lab.service.OrderServiceTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-06-01T18:32:47.386Z" hostname="WIN-5AVD390I2A1" time="0.016">
+  <properties/>
+  <testcase name="updateShouldChangeOrderWhenOrderExists()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.001"/>
+  <testcase name="createShouldThrowExceptionWhenPriceIsNotPositive()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.002"/>
+  <testcase name="deleteShouldReturnFalseWhenOrderDoesNotExist()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.002"/>
+  <testcase name="createShouldThrowExceptionWhenQuantityIsNotPositive()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.002"/>
+  <testcase name="deleteShouldReturnTrueWhenOrderExists()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.0"/>
+  <testcase name="updateShouldReturnEmptyWhenOrderDoesNotExist()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.0"/>
+  <testcase name="findByIdShouldReturnEmptyWhenOrderDoesNotExist()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.0"/>
+  <testcase name="findByIdShouldReturnOrderWhenOrderExists()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.0"/>
+  <testcase name="findAllShouldReturnInitialOrders()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.0"/>
+  <testcase name="createShouldThrowExceptionWhenCustomerNameIsEmpty()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.002"/>
+  <testcase name="createShouldAddOrderWhenDataIsCorrect()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
